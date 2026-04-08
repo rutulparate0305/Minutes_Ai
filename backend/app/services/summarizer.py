@@ -25,3 +25,28 @@ Summarize this meeting transcript into bullet points and action items:
     summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     return summary
+
+
+def extract_speakers(text):
+    speakers = set()
+
+    for line in text.split("\n"):
+        if ":" in line:
+            speaker = line.split(":")[0].strip()
+            speakers.add(speaker)
+
+    return list(speakers)
+
+
+def extract_action_items(text):
+
+    keywords = ["action", "todo", "follow up", "deadline", "assign"]
+
+    actions = []
+
+    for line in text.split("\n"):
+        for keyword in keywords:
+            if keyword in line.lower():
+                actions.append(line)
+
+    return actions
