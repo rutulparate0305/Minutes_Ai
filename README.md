@@ -1,1 +1,1 @@
-# MinitesAI
+# Minutes-AI
