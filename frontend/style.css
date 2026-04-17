@@ -1,0 +1,19 @@
+body {
+
+background-color: #f4f6f8;
+
+}
+
+textarea {
+
+resize: none;
+
+}
+
+#meetingHistory {
+
+max-height: 500px;
+
+overflow-y: auto;
+
+}

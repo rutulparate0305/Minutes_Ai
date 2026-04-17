@@ -40,7 +40,8 @@ async def transcribe_meeting(
     with open(file_location, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    transcript = transcribe_audio(file_location)
+    from app.services.speaker_diarization import diarize_and_transcribe
+    transcript = diarize_and_transcribe(file_location)
 
     summary = summarize_text(transcript)
 
@@ -53,8 +54,8 @@ async def transcribe_meeting(
         filename=file.filename,
         transcript=transcript,
         summary=summary,
-        speakers=json.dumps(speakers),   # FIXED
-        action_items=json.dumps(action_items)  # FIXED
+        speakers=json.dumps(speakers),    
+        action_items=json.dumps(action_items)  
     )
 
     db.add(meeting_record)

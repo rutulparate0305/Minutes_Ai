@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minutes AI Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+<div class="row vh-100">
+
+<!-- Sidebar -->
+<div class="col-2 bg-dark text-white p-3">
+
+<h4>Minutes AI</h4>
+
+<hr>
+
+<h6>Meeting History</h6>
+
+<ul id="meetingHistory" class="list-group">
+
+</ul>
+
+</div>
+
+
+<!-- Main Panel -->
+<div class="col-10">
+
+<div class="p-3">
+
+<h3>Meeting Dashboard</h3>
+
+<hr>
+
+
+<!-- Buttons -->
+<button type="button"
+class="btn btn-success"
+onclick="startRecording()">
+
+Start Recording 
+
+</button>
+
+<button type="button"
+class = "btn btn-success"
+onclick="stopRecording()">
+
+Stop Recording
+
+</button>
+
+
+<input type="file"
+id="audioFile"
+class="form-control mt-3"/>
+
+
+<button 
+type="button"
+class="btn btn-primary mt-2"
+onclick="uploadAudio(event)">
+
+Upload Audio
+
+</button>
+
+
+<hr>
+
+
+<!-- Transcript -->
+<h5>Transcript</h5>
+
+<textarea
+id="transcriptBox"
+class="form-control"
+rows="6"></textarea>
+
+
+<hr>
+
+
+<!-- Summary -->
+<h5>Summary</h5>
+
+<textarea
+id="summaryBox"
+class="form-control"
+rows="4"></textarea>
+
+
+<hr>
+
+
+<!-- Speakers -->
+<h5>Speakers</h5>
+
+<textarea
+id="speakerBox"
+class="form-control"
+rows="2"></textarea>
+
+
+<hr>
+
+
+<!-- Action Items -->
+<h5>Action Items</h5>
+
+<textarea
+id="actionBox"
+class="form-control"
+rows="2"></textarea>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
