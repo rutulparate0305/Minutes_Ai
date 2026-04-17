@@ -1,11 +1,15 @@
 from pyannote.audio import Pipeline
+from dotenv import load_dotenv
 import whisper
 import os
 
-# Load diarization pipeline
+# Load environment variables from .env file
+load_dotenv()
+
+# Load diarization pipeline securely
 pipeline = Pipeline.from_pretrained(
     "pyannote/speaker-diarization",
-    use_auth_token="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"
+    use_auth_token=os.getenv("HF_TOKEN")
 )
 
 # Load Whisper model
@@ -24,10 +28,10 @@ def diarize_and_transcribe(audio_path):
 
     for turn, _, speaker in diarization.itertracks(yield_label=True):
 
-        segment_audio = f"temp_segment.wav"
+        segment_audio = "temp_segment.wav"
 
         os.system(
-            f"ffmpeg -y -i {audio_path} -ss {turn.start} -to {turn.end} {segment_audio}"
+            f'ffmpeg -y -i "{audio_path}" -ss {turn.start} -to {turn.end} "{segment_audio}"'
         )
 
         result = whisper_model.transcribe(segment_audio)
